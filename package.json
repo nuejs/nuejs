@@ -14,9 +14,13 @@
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand"
   },
+  "overrides": {
+    "jest-extended": {
+      "jest": "$jest"
+    }
+  },
   "jest": {
     "setupFilesAfterEnv": [
-      "jest-extended/all",
       "<rootDir>/setup-jest.js"
     ]
   }
