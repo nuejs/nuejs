@@ -9,7 +9,7 @@
   <header>
     <h3>Discussion</h3>
     <nav>
-      <button @click="router.del('id')">×</button>
+      <button @click="router.del('id')">&times;</button>
     </nav>
   </header>
 

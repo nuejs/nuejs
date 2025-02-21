@@ -32,8 +32,8 @@ document.addEventListener('keydown', (evt) => {
   if (key == 'Escape' && !$(':popover-open')) router.del('id')
 
   // check for accesskey element
-  $$('[data-accesskey]').forEach(el => {
-    if (el.dataset.accesskey == key) {
+  $$('[data-accesskey]').filter(el => !el.disabled).forEach(el => {
+    if (el.dataset.accesskey.split(' ').includes(key)) {
       el.focus()
       el.click()
       if (!el.href) evt.preventDefault()
@@ -41,8 +41,8 @@ document.addEventListener('keydown', (evt) => {
   })
 
   // next/prev seek
-  if ('jk'.includes(key)) {
-    const next = getNext(key == 'j')
+  if (['ArrowUp', 'j', 'ArrowDown', 'k'].includes(key)) {
+    const next = getNext(['ArrowDown', 'j'].includes(key))
     next?.focus()
     if (router.state.id) next?.click()
   }
@@ -60,11 +60,9 @@ function getNext(go_forward) {
   if (next) return next
 
   // seek to next page
-  const btn = $(`[data-accesskey=${go_forward ? 'l' : 'h'}]`)
+  const btn = $(`[data-accesskey=${go_forward ? 'ArrowRight h' : 'ArrowLeft l'}]`)
 
-  if (btn.disabled) {
-
-  } else {
+  if (!btn.disabled) {
     btn.click()
     const links = $$(ITEM)
     return links[go_forward ? 0 : links.length -1]

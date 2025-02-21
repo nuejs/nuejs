@@ -39,6 +39,7 @@
       router.bind('grid', ({ grid }) => {
         this.update({ view_mode: grid ? 'grid' : 'tabular' })
       })
+      this.view_mode = router.state.grid ? 'grid' : 'tabular'
     }
   </script>
 
