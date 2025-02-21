@@ -60,7 +60,7 @@ function getNext(go_forward) {
   if (next) return next
 
   // seek to next page
-  const btn = $(`[data-accesskey=${go_forward ? 'ArrowRight h' : 'ArrowLeft l'}]`)
+  const btn = $(`[data-accesskey="${go_forward ? 'ArrowRight h' : 'ArrowLeft l'}"]`)
 
   if (!btn.disabled) {
     btn.click()
