@@ -14,9 +14,17 @@ let is_shown
 document.addEventListener('mouseenter', e => {
   const el = e.target
   const data = el.dataset
-  const kbd = data?.accesskey
+  const kbd = data?.accesskey?.split(' ')?.pop()
   const title = el.nodeType == 1 && el.title
   if (!title && !kbd) return
+
+  if (!CSS.supports('anchor-name')) {
+    if (data.titled) return
+
+    if (title && kbd) el.title = `${el.title} [${kbd}]`
+    else if (kbd) el.title = `[${kbd}]`
+    return el.dataset.titled = true
+  }
 
   if (title) {
     el.removeAttribute('title')
