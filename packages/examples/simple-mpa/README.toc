@@ -1,7 +1,7 @@
 
 
 Standards first: Insanely Ambitious Web Applications
-  Yes. The word "insane" begs for drama, but it's here for accuacy.
+  Yes. The word "insane" begs for drama, but it's here for accuracy.
 
   SHOW: video
 
@@ -11,7 +11,7 @@ Standards first: Insanely Ambitious Web Applications
     Size (bars: React lib, Tailwind, React router,
     Codebase (~10x less, clarity)
     The modern web (standards first: time to harness it!)
-    All core interactions: nav, listing, viwe switch, item, dialog, ..
+    All core interactions: nav, listing, view switch, item, dialog, ..
 
   # The details
   How
@@ -40,7 +40,7 @@ Sidebar
   ---
   Questions
   Problems
-  Feeback
+  Feedback
   Demo requests
     All
     Whale
