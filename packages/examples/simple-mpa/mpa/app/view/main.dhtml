@@ -1,12 +1,13 @@
 
 <script>
   import { router } from '/@nue/app-router.js'
+  import { $ } from '/@nue/view-transitions.js'
   import { model } from '/model/index.js'
 </script>
 
 <main @name="main-panel">
   <header>
-    <h3>{ router.state.type }s</h3>
+    <h3>{ title }</h3>
 
     <nav>
       <small>{ status() }</small>
@@ -39,6 +40,7 @@
   <script>
     router = router
     is_grid = false
+    title = ''
 
     toggleGrid(grid) {
       router.set({ grid })
@@ -46,10 +48,10 @@
     }
 
     mounted() {
-      router.bind('type query filter start sort asc', args => {
+      router.bind('type query filter start sort asc', (args, { path }) => {
         const data = this.coll = model.filter(args)
         this.mountChild('user-list', window.main_wrap, data)
-        this.update()
+        this.update({ title: $(`a[href$="${path}"]`)?.innerText })
       })
       this.is_grid = router.state.grid
     }
