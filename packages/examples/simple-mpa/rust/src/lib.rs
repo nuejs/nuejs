@@ -115,8 +115,8 @@ fn sort_entries(entries: &mut Vec<&String>, sort_by: Option<&SortField>, ascendi
    let compare = match sort_by {
      Some(SortField::Id) => get_number(a, "id").cmp(&get_number(b, "id")),
      Some(SortField::Cc) => extract_field(a, "cc").cmp(&extract_field(b, "cc")),
-     Some(SortField::Plan) => extract_field(a, "plan").cmp(&extract_field(b, "plan")),
-     Some(SortField::Size) => extract_field(a, "size").cmp(&extract_field(b, "size")),
+     Some(SortField::Plan) => extract_field(a, "plan").cmp(&extract_field(b, "plan")), // TODO: incorrect, lexicographical order != free, pro, enterprise -> asc: enterprise, free, pro
+     Some(SortField::Size) => extract_field(a, "size").cmp(&extract_field(b, "size")), // TODO: incorrect, lexicographical order != s, m, l, xl -> asc: l, m, s, xl
      None => get_number(a, "id").cmp(&get_number(b, "id"))
    };
 
